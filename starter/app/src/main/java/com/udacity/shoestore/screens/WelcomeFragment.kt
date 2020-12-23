@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.udacity.shoestore.R
-import com.udacity.shoestore.databinding.FragmentBlankBinding
+import com.udacity.shoestore.databinding.FragmentWelcomeBinding
 
-class BlankFragment : Fragment() {
+class WelcomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        val binding: FragmentBlankBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_blank, container, false)
+        val binding: FragmentWelcomeBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_welcome, container, false)
         return binding.root
     }
 }
