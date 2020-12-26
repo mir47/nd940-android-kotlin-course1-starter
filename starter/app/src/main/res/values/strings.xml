@@ -5,4 +5,5 @@
     <string name="sign_up_button_label">Sign Up</string>
     <string name="login_button_label">Login</string>
     <string name="button_instructions">Instructions</string>
+    <string name="button_shoe_list">Shoe List</string>
 </resources>
