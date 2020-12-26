@@ -22,5 +22,12 @@
         <argument
             android:name="userEmail"
             app:argType="string" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_instructionFragment"
+            app:destination="@id/instructionFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/instructionFragment"
+        android:name="com.udacity.shoestore.screens.InstructionFragment"
+        android:label="InstructionFragment" />
 </navigation>
