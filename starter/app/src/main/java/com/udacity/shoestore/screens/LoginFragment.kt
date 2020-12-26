@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentLoginBinding
 
@@ -15,10 +16,16 @@ class LoginFragment : Fragment() {
                               savedInstanceState: Bundle?): View {
         val binding: FragmentLoginBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login, container, false)
-        binding.buttonSignUp.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_welcomeFragment))
-        binding.buttonLogin.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_welcomeFragment))
+        binding.buttonSignUp.setOnClickListener { view ->
+            view.findNavController()
+                .navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(binding.inputEmail.text.toString()))
+        }
+        binding.buttonLogin.setOnClickListener { view ->
+            view.findNavController()
+                .navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(binding.inputEmail.text.toString()))
+        }
         return binding.root
     }
+
+    // TODO: save email and password state, maybe use a "remember me" checkbox
 }

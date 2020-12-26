@@ -14,6 +14,9 @@ class WelcomeFragment : Fragment() {
                               savedInstanceState: Bundle?): View {
         val binding: FragmentWelcomeBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_welcome, container, false)
+
+        val args = WelcomeFragmentArgs.fromBundle(requireArguments())
+        binding.welcomeTitle.text = args.userEmail
         return binding.root
     }
 }
