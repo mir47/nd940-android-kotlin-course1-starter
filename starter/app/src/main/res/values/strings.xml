@@ -1,3 +1,33 @@
 <resources>
-    <string name="app_name">ShoeStore</string>
+    <string name="app_name">Shoe Store</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="sign_up_button_label">Sign Up</string>
+    <string name="login_button_label">Login</string>
+    <string name="login_email_error">Please enter an email address</string>
+    <string name="login_password_error">Please enter a password</string>
+    <string name="welcome_title">Hello %s</string>
+    <string name="welcome_body">Welcome to the Shoe Store Inventory app. This app is part of a Udacity project, and it allows you to add new shoes to the store.
+        \n\nThe app has these screens:
+        \n\n1. Login
+        \n\n2. Onboarding
+        \n\n3. Shoe listing
+        \n\n4. Shoe detail page
+        \n\nThe shoe listing page will show the list of shoes and a button for adding a new shoe, while the detail page will be for adding a shoe entry. All entries will be saved only as long as the app is running.
+        \n\nClick Next to learn how to use this app.
+    </string>
+    <string name="yellow_star">Yellow star</string>
+    <string name="instruction_title">How To</string>
+    <string name="instruction_body">Click on Start to go to the main screen, where you can create a new shoe listing and add it to the store.</string>
+    <string name="next">Next</string>
+    <string name="start">Start</string>
+    <string name="button_save">Save</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="shoe_detail_name_hint">Shoe Name</string>
+    <string name="shoe_detail_company_hint">Company</string>
+    <string name="shoe_detail_size_hint">Shoe Size</string>
+    <string name="shoe_detail_description_hint">Shoe Description</string>
+    <string name="shoe_detail_input_required_error">Please enter the required input</string>
+    <string name="shoe_detail_text">Name: %s\nCompany: %s\nSize: %s\nDescription: %s</string>
+    <string name="menu_item_logout">Logout</string>
 </resources>
