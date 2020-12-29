@@ -7,11 +7,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.ActivityMainBinding
-import com.udacity.shoestore.vm.ShoesViewModel
+import com.udacity.shoestore.viewmodel.ShoeStoreViewModel
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var viewModel: ShoesViewModel
+    private lateinit var viewModel: ShoeStoreViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         Timber.plant(Timber.DebugTree())
 
-        viewModel = ViewModelProvider(this).get(ShoesViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ShoeStoreViewModel::class.java)
     }
 
     override fun onSupportNavigateUp(): Boolean {

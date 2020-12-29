@@ -1,21 +1,18 @@
-package com.udacity.shoestore.screens
+package com.udacity.shoestore.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.databinding.ItemShoeBinding
-import com.udacity.shoestore.models.Shoe
-import com.udacity.shoestore.vm.ShoesViewModel
+import com.udacity.shoestore.model.Shoe
+import com.udacity.shoestore.viewmodel.ShoeStoreViewModel
 import timber.log.Timber
 
 class ShoeListFragment : Fragment() {
@@ -33,7 +30,7 @@ class ShoeListFragment : Fragment() {
             )
         )
 
-        val viewModel by activityViewModels<ShoesViewModel>()
+        val viewModel by activityViewModels<ShoeStoreViewModel>()
 
         viewModel.shoeList.observe(viewLifecycleOwner) {
             Timber.d("ShoeListFragment: shoe list size = ${it.size}")
@@ -50,7 +47,7 @@ class ShoeListFragment : Fragment() {
         db.item = shoe
         db.root.setOnClickListener {
 //            val v = binding.shoeListLayout.findViewWithTag<View>(shoe.name)
-            val viewModel by activityViewModels<ShoesViewModel>()
+            val viewModel by activityViewModels<ShoeStoreViewModel>()
             viewModel.deleteShoe(shoe)
         }
         return db.root

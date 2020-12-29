@@ -5,7 +5,7 @@
     <data>
         <variable
             name="item"
-            type="com.udacity.shoestore.models.Shoe" />
+            type="com.udacity.shoestore.model.Shoe" />
     </data>
 
     <androidx.cardview.widget.CardView

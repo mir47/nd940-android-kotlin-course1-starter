@@ -1,4 +1,4 @@
-package com.udacity.shoestore.screens
+package com.udacity.shoestore.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
-import com.udacity.shoestore.models.Shoe
-import com.udacity.shoestore.vm.ShoesViewModel
-import timber.log.Timber
+import com.udacity.shoestore.model.Shoe
+import com.udacity.shoestore.viewmodel.ShoeStoreViewModel
 
 class ShoeDetailFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -20,7 +18,7 @@ class ShoeDetailFragment : Fragment() {
         val binding: FragmentShoeDetailBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_detail, container, false)
 
-        val viewModel by activityViewModels<ShoesViewModel>()
+        val viewModel by activityViewModels<ShoeStoreViewModel>()
 
         binding.buttonCancel.setOnClickListener {
             // TODO: show confirmation dialog
