@@ -19,7 +19,8 @@ class WelcomeFragment : Fragment() {
             inflater, R.layout.fragment_welcome, container, false)
 
         val args = WelcomeFragmentArgs.fromBundle(requireArguments())
-        binding.welcomeTitle.text = args.userEmail
+
+        binding.welcomeTitle.text = getString(R.string.welcome_title, args.userEmail)
 
         binding.buttonInstruction.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_welcomeFragment_to_instructionFragment)
