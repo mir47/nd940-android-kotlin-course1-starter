@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity() {
         navController = this.findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
 
-        Timber.plant(Timber.DebugTree())
-
         viewModel = ViewModelProvider(this).get(ShoeStoreViewModel::class.java)
     }
 
