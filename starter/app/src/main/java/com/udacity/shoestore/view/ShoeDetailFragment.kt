@@ -11,16 +11,24 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import com.google.android.material.textfield.TextInputLayout
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.viewmodel.ShoeStoreViewModel
 
 class ShoeDetailFragment : Fragment() {
     private lateinit var binding: FragmentShoeDetailBinding
+    private lateinit var inputs: List<TextInputLayout>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
+        inputs = listOf(
+            binding.inputShoeNameLayout,
+            binding.inputCompanyLayout,
+            binding.inputShoeSizeLayout,
+            binding.inputShoeDescriptionLayout
+        )
 
         val viewModel by activityViewModels<ShoeStoreViewModel>()
         binding.viewModel = viewModel
@@ -41,12 +49,7 @@ class ShoeDetailFragment : Fragment() {
             }
         }
 
-        listOf(
-            binding.inputShoeNameLayout,
-            binding.inputCompanyLayout,
-            binding.inputShoeSizeLayout,
-            binding.inputShoeDescriptionLayout
-        ).forEach { textInputLayout ->
+        inputs.forEach { textInputLayout ->
             textInputLayout.editText?.doAfterTextChanged { editable ->
                 if (!editable.isNullOrBlank()) {
                     textInputLayout.error = null
@@ -59,20 +62,10 @@ class ShoeDetailFragment : Fragment() {
     }
 
     private fun showError() {
-        if (binding.inputShoeName.text.isNullOrEmpty()) {
-            binding.inputShoeNameLayout.error = getString(R.string.shoe_detail_name_error)
-        }
-
-        if (binding.inputCompany.text.isNullOrEmpty()) {
-            binding.inputCompanyLayout.error = getString(R.string.shoe_detail_company_error)
-        }
-
-        if (binding.inputShoeSize.text.isNullOrEmpty()) {
-            binding.inputShoeSizeLayout.error = getString(R.string.shoe_detail_size_error)
-        }
-
-        if (binding.inputShoeDescription.text.isNullOrEmpty()) {
-            binding.inputShoeDescriptionLayout.error = getString(R.string.shoe_detail_description_error)
+        inputs.forEach { textInputLayout ->
+            if (textInputLayout.editText?.text.isNullOrEmpty()) {
+                textInputLayout.error = getString(R.string.shoe_detail_input_required_error)
+            }
         }
     }
 

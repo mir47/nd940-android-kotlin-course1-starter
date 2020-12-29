@@ -27,10 +27,7 @@
     <string name="shoe_detail_company_hint">Company</string>
     <string name="shoe_detail_size_hint">Shoe Size</string>
     <string name="shoe_detail_description_hint">Shoe Description</string>
-    <string name="shoe_detail_name_error">Please enter a name</string>
-    <string name="shoe_detail_company_error">Please enter a company</string>
-    <string name="shoe_detail_size_error">Please enter a size</string>
-    <string name="shoe_detail_description_error">Please enter a description</string>
+    <string name="shoe_detail_input_required_error">Please enter the required input</string>
     <string name="shoe_detail_text">Name: %s\nCompany: %s\nSize: %s\nDescription: %s</string>
     <string name="menu_item_logout">Logout</string>
 </resources>
