@@ -20,7 +20,6 @@ class ShoeListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        Timber.d("ShoeListFragment: onCreateView")
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_list, container, false)
 
@@ -33,7 +32,6 @@ class ShoeListFragment : Fragment() {
         val viewModel by activityViewModels<ShoeStoreViewModel>()
 
         viewModel.shoeList.observe(viewLifecycleOwner) {
-            Timber.d("ShoeListFragment: shoe list size = ${it.size}")
             for (shoe in it) {
                 binding.shoeListLayout.addView(createShoeView(shoe))
             }
@@ -45,31 +43,6 @@ class ShoeListFragment : Fragment() {
     private fun createShoeView(shoe: Shoe): View {
         val db = DataBindingUtil.inflate<ItemShoeBinding>(LayoutInflater.from(context), R.layout.item_shoe, binding.shoeListLayout, false)
         db.item = shoe
-        db.root.setOnClickListener {
-//            val v = binding.shoeListLayout.findViewWithTag<View>(shoe.name)
-            val viewModel by activityViewModels<ShoeStoreViewModel>()
-            viewModel.deleteShoe(shoe)
-        }
         return db.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Timber.d("ShoeListFragment: onDestroyView")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.d("ShoeListFragment: onDestroy")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Timber.d("ShoeListFragment: onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Timber.d("ShoeListFragment: onStop")
     }
 }

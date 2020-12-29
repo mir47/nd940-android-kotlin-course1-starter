@@ -16,6 +16,7 @@
         android:layout_margin="@dimen/vertical_margin_half"
         app:cardCornerRadius="@dimen/vertical_margin_half">
 
+        <!--  Use ConstraintLayout to avoid nested layouts  -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

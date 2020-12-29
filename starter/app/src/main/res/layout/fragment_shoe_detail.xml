@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.udacity.shoestore.viewmodel.ShoeStoreViewModel" />
+    </data>
+
+    <!--  Simple linear layout  -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/shoe_detail_name_hint"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={viewModel.shoeName}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -33,7 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/shoe_detail_company_hint"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={viewModel.shoeCompany}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -48,7 +57,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/shoe_detail_size_hint"
                 android:inputType="number"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={viewModel.shoeSize}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/shoe_detail_description_hint"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={viewModel.shoeDescription}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -70,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_margin"
+            android:onClick="@{() -> viewModel.save()}"
             android:text="@string/button_save"/>
 
         <Button
@@ -77,6 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_margin"
+            android:onClick="@{() -> viewModel.completeScreen()}"
             android:text="@string/button_cancel"/>
 
     </LinearLayout>

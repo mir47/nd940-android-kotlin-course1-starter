@@ -22,73 +22,69 @@ class ShoeDetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
 
         val viewModel by activityViewModels<ShoeStoreViewModel>()
+        binding.viewModel = viewModel
+
+        viewModel.showError.observe(viewLifecycleOwner) {
+            if (it) showError()
+        }
+
+        viewModel.completeScreen.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.inputShoeName.setText("")
+                binding.inputCompany.setText("")
+                binding.inputShoeSize.setText("")
+                binding.inputShoeDescription.setText("")
+                view?.findNavController()?.popBackStack()
+                viewModel.resetScreen()
+            }
+        }
 
         binding.inputShoeName.doAfterTextChanged {
             if (!it.isNullOrBlank()) {
                 binding.inputShoeNameLayout.error = null
+                viewModel.resetError()
             }
         }
 
         binding.inputCompany.doAfterTextChanged {
             if (!it.isNullOrBlank()) {
                 binding.inputCompanyLayout.error = null
+                viewModel.resetError()
             }
         }
 
         binding.inputShoeSize.doAfterTextChanged {
             if (!it.isNullOrBlank()) {
                 binding.inputShoeSizeLayout.error = null
+                viewModel.resetError()
             }
         }
 
         binding.inputShoeDescription.doAfterTextChanged {
             if (!it.isNullOrBlank()) {
                 binding.inputShoeDescriptionLayout.error = null
-            }
-        }
-
-        binding.buttonCancel.setOnClickListener { it.findNavController().popBackStack() }
-
-        binding.buttonSave.setOnClickListener {
-            if (validateInputs()) {
-                it.findNavController().popBackStack()
-                viewModel.addShoe(
-                    Shoe(
-                        binding.inputShoeName.text.toString(),
-                        binding.inputShoeSize.text.toString().toDouble(),
-                        binding.inputCompany.text.toString(),
-                        binding.inputShoeDescription.text.toString()
-                    )
-                )
+                viewModel.resetError()
             }
         }
 
         return binding.root
     }
 
-    private fun validateInputs(): Boolean {
-        var valid = true
-
+    private fun showError() {
         if (binding.inputShoeName.text.isNullOrEmpty()) {
             binding.inputShoeNameLayout.error = getString(R.string.shoe_detail_name_error)
-            valid = false
         }
 
         if (binding.inputCompany.text.isNullOrEmpty()) {
             binding.inputCompanyLayout.error = getString(R.string.shoe_detail_company_error)
-            valid = false
         }
 
         if (binding.inputShoeSize.text.isNullOrEmpty()) {
             binding.inputShoeSizeLayout.error = getString(R.string.shoe_detail_size_error)
-            valid = false
         }
 
         if (binding.inputShoeDescription.text.isNullOrEmpty()) {
             binding.inputShoeDescriptionLayout.error = getString(R.string.shoe_detail_description_error)
-            valid = false
         }
-
-        return valid
     }
 }
