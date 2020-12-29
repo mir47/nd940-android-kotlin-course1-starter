@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.udacity.shoestore.viewmodel.ShoeStoreViewModel" />
@@ -78,19 +79,21 @@
 
         <Button
             android:id="@+id/button_save"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_margin"
             android:onClick="@{() -> viewModel.save()}"
-            android:text="@string/button_save"/>
+            android:text="@string/button_save" />
 
         <Button
             android:id="@+id/button_cancel"
+            style="@style/CancelButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_margin"
             android:onClick="@{() -> viewModel.completeScreen()}"
-            android:text="@string/button_cancel"/>
+            android:text="@string/button_cancel" />
 
     </LinearLayout>
 </layout>

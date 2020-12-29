@@ -10,24 +10,27 @@
 
         <TextView
             android:id="@+id/instruction_title"
+            style="@style/TitleStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="@string/instruction_title" />
 
         <TextView
             android:id="@+id/instruction_body"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginTop="@dimen/vertical_margin"
-            android:text="@string/instruction_body"/>
+            android:layout_weight="1"
+            android:text="@string/instruction_body"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/body_text_size" />
 
         <Button
-            android:id="@+id/button_shoe_list"
+            android:id="@+id/button_start"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_margin"
-            android:text="@string/button_shoe_list" />
+            android:text="@string/start" />
     </LinearLayout>
 </layout>
