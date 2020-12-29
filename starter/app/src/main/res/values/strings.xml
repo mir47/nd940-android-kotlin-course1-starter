@@ -22,4 +22,5 @@
     <string name="shoe_detail_company_error">Please enter a company</string>
     <string name="shoe_detail_size_error">Please enter a size</string>
     <string name="shoe_detail_description_error">Please enter a description</string>
+    <string name="menu_item_logout">Logout</string>
 </resources>
