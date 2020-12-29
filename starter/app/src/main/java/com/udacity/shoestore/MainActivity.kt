@@ -2,16 +2,14 @@ package com.udacity.shoestore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.ActivityMainBinding
 import com.udacity.shoestore.viewmodel.ShoeStoreViewModel
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: ShoeStoreViewModel
@@ -25,6 +23,14 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController)
 
         viewModel = ViewModelProvider(this).get(ShoeStoreViewModel::class.java)
+
+        navController.addOnDestinationChangedListener { _: NavController, navDestination: NavDestination, _: Bundle? ->
+            if (navDestination.id == R.id.shoeListFragment || navDestination.id == R.id.loginFragment) {
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            } else {
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
