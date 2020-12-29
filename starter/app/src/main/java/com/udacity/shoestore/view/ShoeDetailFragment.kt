@@ -1,9 +1,11 @@
 package com.udacity.shoestore.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -11,7 +13,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
-import com.udacity.shoestore.model.Shoe
 import com.udacity.shoestore.viewmodel.ShoeStoreViewModel
 
 class ShoeDetailFragment : Fragment() {
@@ -36,34 +37,21 @@ class ShoeDetailFragment : Fragment() {
                 binding.inputShoeDescription.setText("")
                 view?.findNavController()?.popBackStack()
                 viewModel.resetScreen()
+                closeKeyboard()
             }
         }
 
-        binding.inputShoeName.doAfterTextChanged {
-            if (!it.isNullOrBlank()) {
-                binding.inputShoeNameLayout.error = null
-                viewModel.resetError()
-            }
-        }
-
-        binding.inputCompany.doAfterTextChanged {
-            if (!it.isNullOrBlank()) {
-                binding.inputCompanyLayout.error = null
-                viewModel.resetError()
-            }
-        }
-
-        binding.inputShoeSize.doAfterTextChanged {
-            if (!it.isNullOrBlank()) {
-                binding.inputShoeSizeLayout.error = null
-                viewModel.resetError()
-            }
-        }
-
-        binding.inputShoeDescription.doAfterTextChanged {
-            if (!it.isNullOrBlank()) {
-                binding.inputShoeDescriptionLayout.error = null
-                viewModel.resetError()
+        listOf(
+            binding.inputShoeNameLayout,
+            binding.inputCompanyLayout,
+            binding.inputShoeSizeLayout,
+            binding.inputShoeDescriptionLayout
+        ).forEach { textInputLayout ->
+            textInputLayout.editText?.doAfterTextChanged { editable ->
+                if (!editable.isNullOrBlank()) {
+                    textInputLayout.error = null
+                    viewModel.resetError()
+                }
             }
         }
 
@@ -86,5 +74,10 @@ class ShoeDetailFragment : Fragment() {
         if (binding.inputShoeDescription.text.isNullOrEmpty()) {
             binding.inputShoeDescriptionLayout.error = getString(R.string.shoe_detail_description_error)
         }
+    }
+
+    private fun closeKeyboard() {
+        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 }
