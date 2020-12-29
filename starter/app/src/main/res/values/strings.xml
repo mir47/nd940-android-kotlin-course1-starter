@@ -8,6 +8,8 @@
     <string name="login_password_error">Please enter a password</string>
     <string name="welcome_title">Hello %s</string>
     <string name="welcome_body">Welcome to the Shoe Store Inventory app. This is a project app that allows you to add new shoes to the store. Click on Instructions to see how to use this app.</string>
+    <string name="instruction_title">How To</string>
+    <string name="instruction_body">Press on the Shoe List button to go to the main screen, where you can create a new shoe listing and add it to the store.</string>
     <string name="button_instructions">Instructions</string>
     <string name="button_shoe_list">Shoe List</string>
     <string name="button_save">Save</string>
