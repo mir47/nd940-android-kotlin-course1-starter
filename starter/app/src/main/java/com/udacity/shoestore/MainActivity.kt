@@ -33,20 +33,4 @@ class MainActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.nav_host_fragment)
         return navController.navigateUp()
     }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.logout -> onLogout()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun onLogout() {
-        navController.popBackStack(R.id.loginFragment, false)
-    }
 }
